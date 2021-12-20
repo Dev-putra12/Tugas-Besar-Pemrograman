@@ -41,14 +41,29 @@ int main (){
     menu_masuk();
 }
 
+//=======================================================================//
+//**************  Fungsi Untuk Menampilkan Header/Judul  ****************//
+//=======================================================================//
+// Nama Fungsi    : header                                               //
+// Input Argumen  : -                                                    //
+// Output Argumen : -                                                    //
+// Deskripsi      : Fungsi untuk menampilkan header/judul game dan       //
+//                  pembuat                                              //
+//                                                                       //
+// Versi : 1.0                                      Rev. 0               //
+// Tgl   : 09-12-2021                               Tgl: -               //
+// Ida Bagus Mas Manuaba - 2105551008                                    //
+// Kelas A                                                               //
+//=======================================================================//
+
 void header (){
     system ("cls");
 	printf  ("\t\t\t\t\t====================================================\n");
 	printf  ("\t\t\t\t\t||                   GAME PUZZLE                  ||\n");
 	printf  ("\t\t\t\t\t====================================================\n");
 	printf  ("\t\t\t\t\t||                Program dibuat oleh:            ||\n");
-	printf  ("\t\t\t\t\t||              1. IDA BAGUS MAS MANUABA          ||\n");
-	printf  ("\t\t\t\t\t||              2. AGUS PUTRA                     ||\n");
+	printf  ("\t\t\t\t\t|| 1. IDA BAGUS MAS MANUABA    (2105551008)       ||\n");
+	printf  ("\t\t\t\t\t|| 2. I PUTU AGUS PUTRA NEGARA (2105551044)       ||\n");
 	printf  ("\t\t\t\t\t====================================================\n");
 	printf  ("\t\t\t\t\t||       Tekan ENTER  untuk melanjutkan....       ||\n");
     printf  ("\t\t\t\t\t====================================================\n");
@@ -62,7 +77,7 @@ void header (){
 // Nama Fungsi    : menu_masuk                                           //
 // Input Argumen  : int pilihanmasuk                                     //
 // Output Argumen : -                                                    //
-// Deskripsi      : Fungsi untuk menampilkan menu awal game  //
+// Deskripsi      : Fungsi untuk menampilkan menu awal game              //
 //                  puzzle yaitu menu login, regristrasi dan exit        //
 //                                                                       //
 // Versi : 1.0                                      Rev. 0               //
@@ -80,7 +95,7 @@ void menu_masuk(){
     printf ("\t\t\t\t\t|-------|----------------------------------------|\n");
     printf ("\t\t\t\t\t|   1   |    Login                               |\n");
     printf ("\t\t\t\t\t|   2   |    Registrasi                          |\n");   
-    printf ("\t\t\t\t\t|   4   |    Exit                                |\n");
+    printf ("\t\t\t\t\t|   3   |    Exit                                |\n");
     printf ("\t\t\t\t\t|================================================|\n");
     printf ("\t\t\t\t\t|================================================|\n");
     printf ("\t\t\t\t\t|| Masukkan pilihan Anda : ");
@@ -142,25 +157,30 @@ void daftar(){
     }
 
     // Instruksi untuk menginput nama, username dan password
-    printf("\n\t\t\t\t\t Silahkan masukan data dibawah untuk Regristrasi\n\n");
-    getchar();
-    printf("\t\t\t\t\t Nama : ");
-    gets(u.nama);
-    printf("\n\t\t\t\t\t Enter Username:");
-    scanf ("%s", u.username);
-    printf("\n\t\t\t\t\t Enter Password:");
-    scanf ("%s", u.password);
+  printf("\t\t\t\t\t|===================================================|\n");
+  printf("\t\t\t\t\t|                    MENU REGISTER                  |\n");
+  printf("\t\t\t\t\t|---------------------------------------------------|\n");
+  printf("\t\t\t\t\t|SILAHKAN LENGKAPI DATA DIBAWAH                     |\n");
+  getchar();
+  printf("\t\t\t\t\t|Masukkan Nama     : ");
+  gets(u.nama);
+  printf("\t\t\t\t\t|Masukkan Username : ");
+  scanf("%s", u.username);
+  printf("\t\t\t\t\t|Masukkan Password : ");
+  scanf("%s", u.password);
+  printf("\t\t\t\t\t|===================================================|\n");
 
     // Menuliskan nama yang diinput oleh pengguna kedalam file "RecordLogin.txt"
-    fwrite(&u,sizeof(u),1,regis);
-    fclose(regis);
-    printf("\n\t\t\t\t\t Hallo %s!\n", u.nama);
-    printf("\n\t\t\t\t\t Registrasi Telah Berhasil!");
-    printf ("\n\t\t\t\t\t Akun anda terdaftar, silahkan login dan bersenang-senang !");
-    printf  ("\t\t\t\t\t====================================================\n");
-    getchar();
-	printf  ("\t\t\t\t\t         Tekan ENTER  untuk melanjutkan....    \n");
-	getchar ();
+  fwrite(&u, sizeof(u), 1, regis);
+  fclose(regis);
+  printf("\t\t\t\t\t|===================================================|\n");
+  printf("\t\t\t\t\t|                    BERHASIL REGISTER              |\n");
+  printf("\t\t\t\t\t|---------------------------------------------------|\n");
+  printf("\t\t\t\t\t|HALLO %s!                                   \n", u.nama);
+  printf("\t\t\t\t\t|AKUN ANDA TELAH TERDAFTAR,SILAHKAN LOGIN DAN BERSENANG-SENANG ");
+  printf("\t\t\t\t\t|===================================================|\n");
+  getchar();
+  printf("\t\t\t\t\t|             TEKAN ENTER UNTUK MELANJUTKAN         |\n");
     // Membersikan layar terminal
     system ("cls");
     // Memanggil fungsi masuk()
@@ -207,52 +227,56 @@ void masuk(){
     // Memperlihatkan tanggal login
     waktu();
     // Instruksi untuk LOGIN
-    printf ("\t\t\t\t\t||========================||\n");
-    printf ("\t\t\t\t\t||          LOGIN         ||\n");
-    printf ("\t\t\t\t\t||========================||\n");
-    printf ("\t\t\t\t\t|| Username: ");
-    scanf  ("%s", username);
-    printf ("\t\t\t\t\t||========================||\n");
-    printf ("\t\t\t\t\t|| Password: ");
-    scanf  ("%s", password);
-    printf ("\t\t\t\t\t||========================||\n");
-    system ("cls");
+  printf("\t\t\t\t\t|===================================================|\n");
+  printf("\t\t\t\t\t|                    MENU LOGIN                     |\n");
+  printf("\t\t\t\t\t|---------------------------------------------------|\n");
+  printf("\t\t\t\t\t|SILAHKAN LOGIN DENGAN AKUN ANDA                    |\n");
+  printf("\t\t\t\t\t|Masukkan Username : ");
+  scanf("%s", username);
+  printf("\t\t\t\t\t|Masukkan Password : ");
+  scanf("%s", password);
+  printf("\t\t\t\t\t|===================================================|\n");
+  system("cls");
     // Membeaca file "RecordLogin.txt"
     while(fread(&u,sizeof(u),1,record)){
         /*  Mengkomparasi username serta password yang diinput pengguna kedalam fungsi
             masuk() dengan username serta password yang sudah terdaftar */
         if(strcmp(username, u.username)==0 && strcmp(password, u.password)==0){
-            printf ("\t\t\t\t\t|==================|\n");
-            printf ("\t\t\t\t\t|| Login Berhasil!||\n");
-            printf ("\t\t\t\t\t|==================|\n");
-
+            printf("\t\t\t\t\t|================================================|\n");
+      		printf("\t\t\t\t\t|                   LOGIN BERHASIL               |\n");
+      		printf("\t\t\t\t\t|================================================|\n");
         }
         //  Jika akun tidak terdaftar maka akan diberikan pilihan untuk mendaftar atau keluar dari program
         else {
-            printf ("\t\t\t\t\t|=====================||\n");
-            printf ("\t\t\t\t\t||Akun tidak terdaftar!\n");
-            printf ("\t\t\t\t\t|=====================||\n");
+            printf("\t\t\t\t\t|================================================|\n");
+      		printf("\t\t\t\t\t|               AKUN TIDAK TERDAFTAR             |\n");
+      		printf("\t\t\t\t\t|================================================|\n");
 
             mnmasuk:
-            printf ("\t\t\t\t\t|===========================||\n");
-            printf ("\t\t\t\t\t||Ketik 1 Untuk Regristrasi");
-            printf ("\n\t\t\t\t||Ketik 2 Untuk Login Ulang");
-            printf ("\n\t\t\t\t||Ketik 3 Untuk Exit\n");
-            printf ("\t\t\t\t\t|===========================||\n");
-            printf ("\n\t\t\t\t||Masukan Pilihan: ");
-            scanf ("%d", &pilihan);
-            system ("cls");
+            printf("\t\t\t\t\t|===================================================|\n");
+      		printf("\t\t\t\t\t|  NO  |    MENU LOGIN/REGISTER                     |\n");
+      		printf("\t\t\t\t\t|------|--------------------------------------------|\n");
+      		printf("\t\t\t\t\t|  1   |    LOGIN ULANG                             |\n");
+      		printf("\t\t\t\t\t|  2   |    REGISTER                                |\n");
+      		printf("\t\t\t\t\t|  3   |    EXIT                                    |\n");
+      		printf("\t\t\t\t\t|===================================================|\n");
+      		printf("\t\t\t\t\t|===================================================|\n");
+      		printf("\t\t\t\t\t|| MASUKAN PILIHAN ANDA : ");
+      		scanf("%d", &pilihan);
+      		system("cls");
             // Jika pengguna mengetik nomor 1 maka akan dialihkan kepada fungsi daftar
             if (pilihan == 1){
-                daftar();
+                masuk();
             /* Menggunakan fungsi recursive kepada fungsi masuk agar pengguna
                dapat melakukan percobaan masuk kembali jika terjadi kesalahan penulisan */
             } else if (pilihan==2) {
-                masuk();
+                daftar();
             } else if (pilihan ==3){
                 exit(1);
             } else {
-                printf ("\t\t\t\t\t ERROR");
+                printf("\t\t\t\t\t|================================================|\n");
+        		printf("\t\t\t\t\t|               PILIHAN TIDAK TERSEDIA           |\n");
+        		printf("\t\t\t\t\t|================================================|\n");
                 goto mnmasuk;
             }
         }
@@ -276,10 +300,10 @@ void masuk(){
 // Kelas A                                                               //
 //=======================================================================//
 void error_alert(){
-    printf   ("\t\t\t\t\t================================================  \n");
-    printf   ("\t\t\t\t\t||           Pilihan Tidak Tersedia!          || \n");
-    printf   ("\t\t\t\t\t||   Silahkan Memilih Pilihan yang Sudah ada  || \n");
-    printf   ("\t\t\t\t\t================================================  \n");
+    printf("\t\t\t\t\t|================================================|\n");
+  	printf("\t\t\t\t\t|               PILIHAN TIDAK TERSEDIA           |\n");
+  	printf("\t\t\t\t\t|     SILAHKAN MEMILIH PILIHAN YANG SUDAH ADA    |\n");
+  	printf("\t\t\t\t\t|================================================|\n");
 }
 
 //=======================================================================//
