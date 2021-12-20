@@ -1,40 +1,54 @@
-#include <stdlib.h>
-#include <time.h>
-#include <stdio.h>
+#include <stdlib.h> // memanggil seluruh library standar bahasa c
+#include <time.h> // memanggil seluruh library yang mengandung waktu
+#include <stdio.h> // memanggil seluruh library input output
 
-#define atas 1
-#define kiri 2
-#define bawah 3
-#define kanan 4
+#define atas 1 //membuat urutan atas menjadi nomor 1
+#define kiri 2 //membuat urutan kiri menjadi nomor 2
+#define bawah 3 //membuat urutan bawah menjadi nomor 3
+#define kanan 4 //membuat urutan kanan menjadi nomor 4
 
-#define keyUp 0x048
-#define keyDown 0x050
-#define keyLeft 0x04b
-#define keyRight 0x04d
+#define keyUp 0x048 // untuk membuat agar game puzzle bisa digerakan menggunakan keyboard panah atas 
+#define keyDown 0x050 // untuk membuat agar game puzzle bisa digerakan menggunakan keyboard panah bawah 
+#define keyLeft 0x04b // untuk membuat agar game puzzle bisa digerakan menggunakan keyboard panah kiri 
+#define keyRight 0x04d // untuk membuat agar game puzzle bisa digerakan menggunakan keyboard panah kanan 
 
-#define true 1
-#define false 0
+#define true 1 // mendefinisikan bahwa boolean 1 adalah true 
+#define false 0 // mendefinisikan bahwa boolean 0 adalah false
 
-#define easy 10
-#define medium 20
-#define hard 30
+#define easy 10 // untuk membuat game puzzle memiliki 10 kolom
+#define medium 20 // untuk membuat game puzzle memiliki 20 kolom
+#define hard 30 // untuk membuat game puzzle memiliki 30 kolom
 
 #define caption " ----------------\n// GAME PUZZLE //\n----------------\n"
 
-#define fieldSize 4
+#define fieldSize 4 // untuk membuat dimensi game puzzle menjadi 4
 
-char field[fieldSize][fieldSize];
-char field2[fieldSize][fieldSize];
-unsigned int seed;
-int x, y;
+char field[fieldSize][fieldSize]; // untuk menentukan baris
+char field2[fieldSize][fieldSize]; // untuk menentukan kolom
+unsigned int seed; // digunakan agar tidak ada angka yang bernilai negatif 
+int x, y; // mendeklarasikan variabel x dan y 
 
-int acak(int i);
-void initField(int movement);
-void move(int arah);
-void generateOutput();
-int cekUrut();
+int acak(int i); // untuk membuat nilai acak pada kolom puzzle
+void initField(int movement); // untuk membuat pergerakan di dalam game puzzle 
+void move(int arah); // untuk menentukan arah gerak pada game puzzle
+void generateOutput(); // untuk membuat tampilan output pada game puzzle 
+int cekUrut(); // untuk melakukan pengecekan apakah nilai sudah urut agar puzzle bisa tau benar atau salah
 
-int acak(int i)
+//=======================================================================//
+//***************  Fungsi Untuk Mengacak Nomor  *****************		 //
+//=======================================================================//
+// Nama Fungsi    : acak                                           		 //
+// Input Argumen  : int acak(int i)                                      //
+// Output Argumen : -                                                    //
+// Deskripsi      : untuk melakukan pengacakan nilai pada game puzzle    //
+//                                                                       //
+// Versi : 1.0                                      Rev. 0               //
+// Tgl   : 2o-12-2021                               Tgl: -               //
+// I Putu Agus Putra Negara - 2105551044                                 //
+// Kelas B                                                               //
+//=======================================================================//
+
+int acak(int i) // membuat nilai puzzle acak sebanyak 5 kali pengacakan agar nilai nya tidak sama di setiap game 
 {
   int a;
   seed += 5;
@@ -45,6 +59,19 @@ int acak(int i)
   return (a);
 }
 
+//=======================================================================//
+//***************  Fungsi Untuk Pergerakan puzzle  *****************	 //
+//=======================================================================//
+// Nama Fungsi    : initField                                            //
+// Input Argumen  : void initField(int movement)                         //
+// Output Argumen : -                                                    //
+// Deskripsi      : untuk mengatur pergerakan pada game puzzle     		 //
+//                                                                       //
+// Versi : 1.0                                      Rev. 0               //
+// Tgl   : 2o-12-2021                               Tgl: -               //
+// I Putu Agus Putra Negara - 2105551044                                 //
+// Kelas B                                                               //
+//=======================================================================//
 void initField(int movement)
 {
   int arah, arahOld = -1, nPindah = movement, xOld, yOld;
@@ -130,6 +157,20 @@ void initField(int movement)
   }
 }
 
+//=======================================================================//
+//***************  Fungsi Untuk Bergerak pada game puzzle  **************//
+//=======================================================================//
+// Nama Fungsi    : move                                           		 //
+// Input Argumen  : void move(int arah)                                  //
+// Output Argumen : -                                                    //
+// Deskripsi      : untuk membuat cara bergerak pada game puzzle agar 	 //
+					sesuai dengan pergerakan yang sudah ada     	     //
+//                                                                       //
+// Versi : 1.0                                      Rev. 0               //
+// Tgl   : 2o-12-2021                               Tgl: -               //
+// I Putu Agus Putra Negara - 2105551044                                 //
+// Kelas B                                                               //
+//=======================================================================//
 void move(int arah)
 {
   int xOld, yOld;
@@ -174,10 +215,24 @@ void move(int arah)
   generateOutput();
 }
 
+//=======================================================================//
+//*****  Fungsi Untuk Membuat output garis hiasan untuk puzzle  ******   //
+//=======================================================================//
+// Nama Fungsi    : generateOutput                                       //
+// Input Argumen  : void generateOutput()                                //
+// Output Argumen : -                                                    //
+// Deskripsi      : untuk membuat output garis pinggir pada puzzle dan 	 //
+					membuat output tulisan petunjuk     				 //
+//                                                                       //
+// Versi : 1.0                                      Rev. 0               //
+// Tgl   : 2o-12-2021                               Tgl: -               //
+// I Putu Agus Putra Negara - 2105551044                                 //
+// Kelas B                                                               //
+//=======================================================================//
 void generateOutput()
 {
   int i, j, k;
-  clrscr();
+  system("cls");
   puts(caption);
   puts("Tekan ESC untuk keluar / reset permainan...");
   for (k = 1; k <= fieldSize; k++)
@@ -205,6 +260,19 @@ void generateOutput()
   }
 }
 
+//=======================================================================//
+//***************  Fungsi Untuk Mengecek Urutan  *****************		 //
+//=======================================================================//
+// Nama Fungsi    : cekUrut                                              //
+// Input Argumen  : int cekUrut()                                      	 //
+// Output Argumen : -                                                    //
+// Deskripsi      : untuk mengecek urutan nilai pada game puzzle    	 //
+//                                                                       //
+// Versi : 1.0                                      Rev. 0               //
+// Tgl   : 2o-12-2021                               Tgl: -               //
+// I Putu Agus Putra Negara - 2105551044                                 //
+// Kelas B                                                               //
+//=======================================================================//
 int cekUrut()
 {
   int c, d;
@@ -226,6 +294,20 @@ int cekUrut()
   return (match);
 }
 
+//=======================================================================//
+//***************  Fungsi Untuk Program Utama *****************		 	 //
+//=======================================================================//
+// Nama Fungsi    : main                                           		 //
+// Input Argumen  : main()                                      		 //
+// Output Argumen : -                                                    //
+// Deskripsi      : untuk menjalankan keseluruhan program pada  		 //
+					game puzzle    										 //
+//                                                                       //
+// Versi : 1.0                                      Rev. 0               //
+// Tgl   : 2o-12-2021                               Tgl: -               //
+// I Putu Agus Putra Negara - 2105551044                                 //
+// Kelas B                                                               //
+//=======================================================================//
 main()
 {
   int i, j, k, level;
