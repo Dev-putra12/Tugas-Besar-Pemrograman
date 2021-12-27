@@ -455,7 +455,7 @@ void header ()
 //=======================================================================//
 
 //fungsi dari menu
-void menu(
+void menu()
 {
 	menu:																							//membuat 
 	simbol();
