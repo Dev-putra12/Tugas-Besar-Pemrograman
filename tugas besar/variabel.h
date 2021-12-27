@@ -1,7 +1,7 @@
 //Header untuk menyimpan variable-variable yang digunakan pada program ini
-#include <time.h>                   // memanggil seluruh library yang mengandung waktu
-#include "windows.h"                // memanggil seluruh library yang tersedia di windows.h
-#include <string.h>								  // memanggi seluruh library string.h
+#include <time.h>   // memanggil seluruh library yang mengandung waktu
+#include "windows.h"      // memanggil seluruh library yang tersedia di windows.h
+#include <string.h>     // memanggi seluruh library string.h
 
 
 
