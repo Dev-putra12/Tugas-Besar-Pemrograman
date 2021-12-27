@@ -1,3 +1,4 @@
+// Deklarasi file header 
 #include <stdlib.h> 																// memanggil seluruh library standar bahasa c
 #include <time.h> 																	// memanggil seluruh library yang mengandung waktu
 #include <stdio.h> 																	// memanggil seluruh library input output
@@ -570,6 +571,7 @@ void menu_petunjuk() {
 	printf("\t\t        ||    3. Panah Atas   = Menggeser Ke Atas                   ||\n");
 	printf("\t\t        ||                                                          ||\n");
 	printf("\t\t        ||    4. Panah Bawah  = Menggeser Ke Bawah                  ||\n");
+	printf("\t\t        ||                                                          ||\n");
 	printf("\t\t        ==============================================================\n");
 	printf("\t\t        ||                                                          ||\n");
 	printf("\t\t        ||         Tekan ENTER  untuk Kembali Ke Menu Utama         ||\n");
@@ -606,12 +608,11 @@ void menu_tentang () {
 	printf("\n\t\t      |  sederhana yang kami buat untuk melatih logika dan kecepa- |             ");  
 	printf("\n\t\t      |  tan berpikir pemain serta dapat dijadikan media hiburan   |             ");       
 	printf("\n\t\t      |  dikala kebosanan melanda.                                 |             ");                  
-    printf("\n\t\t       ------------------------------------------------------------              ");   
-    
+    printf("\n\t\t       ------------------------------------------------------------              ");      
     printf  ("\n\t\t        ===========================================================\n");
 	printf  ("\t\t         ||         P R O G R A M  D I B U A T  O L E H :       ||\n");
 	printf  ("\t\t         ||                                                     ||\n");
-	printf  ("\t\t         ||    1. IDA BAGUS MAS MANUABA (2105551008)            ||\n");
+	printf  ("\t\t         ||    1. IDA BAGUS MAS MANUABA    (2105551008)         ||\n");
 	printf  ("\t\t         ||                                                     ||\n");
 	printf  ("\t\t         ||    2. I PUTU AGUS PUTRA NEGARA (2105551044)         ||\n");
 	printf  ("\t\t         ||                                                     ||\n");
@@ -640,10 +641,12 @@ void menu_tentang () {
 // Kelas A                                                               //
 //=======================================================================//
 void error_alert(){
-    printf("\t\t\t\t\t|================================================|\n");
-  	printf("\t\t\t\t\t|               PILIHAN TIDAK TERSEDIA           |\n");
-  	printf("\t\t\t\t\t|     SILAHKAN MEMILIH PILIHAN YANG SUDAH ADA    |\n");
-  	printf("\t\t\t\t\t|================================================|\n");
+	setcolor(4);
+    printf("\t\t           |================================================|\n");
+  	printf("\t\t           |               PILIHAN TIDAK TERSEDIA           |\n");
+  	printf("\t\t           |                                                |\n");
+  	printf("\t\t           |     SILAHKAN MEMILIH PILIHAN YANG SUDAH ADA    |\n");
+  	printf("\t\t           |================================================|\n");
 }
 
 void simbol(){
