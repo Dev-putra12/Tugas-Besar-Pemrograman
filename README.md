@@ -13,8 +13,8 @@ Text Editor yang kami gunakan yaitu Visual Studio Code dengan menambahkan bebera
 
 Maka dari itu program ini dapat dijalankan dengan cara :
 
-Mendownload repository Tugas-Besar-Pemrograman ini pada komputer anda
-Memastikan bahwa anda memiliki terminal based UNIX seperti Linux terminal, Mac terminal (pada OS Windows dapat menggunakan Terminal Cygwin sebagai emulator sekaligus compiler)
-Lalu mengganti directory sesuai dengan dimana anda menyimpan folder Tugas-Besar-Pemrograman ini contoh : cd D:/Tugas-Besar-Pemrograman atau cd Desktop/Tugas-Besar-Pemrograman
-Jika sudah berada pada directory yang benar maka anda dapat mengcompile file NumberPuzzle.c dang menjalankan nya 
-Silahkan mencoba kritik dan saran kami persilahkan dan kami akan mencoba untuk mengembangkan program ini Terima Kasih
+1.Mendownload repository Tugas-Besar-Pemrograman ini pada komputer anda
+2.Memastikan bahwa anda memiliki terminal based UNIX seperti Linux terminal, Mac terminal (pada OS Windows dapat menggunakan Terminal Cygwin sebagai emulator sekaligus compiler)
+3.Lalu mengganti directory sesuai dengan dimana anda menyimpan folder Tugas-Besar-Pemrograman ini contoh : cd D:/Tugas-Besar-Pemrograman atau cd Desktop/Tugas-Besar-Pemrograman
+4.Jika sudah berada pada directory yang benar maka anda dapat mengcompile file NumberPuzzle.c dang menjalankan nya 
+5.Silahkan mencoba kritik dan saran kami persilahkan dan kami akan mencoba untuk mengembangkan program ini Terima Kasih
