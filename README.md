@@ -1,6 +1,21 @@
 # Tugas-Besar-Pemrograman
-repo ini berisi semua file yang digunakan untuk membuat tugas besar pemrograman
+repository ini berisi semua file yang digunakan untuk membuat tugas besar pemrograman
 
-step 1 : membuat login sesuai dengan yang ada di file, jadi user akan mendapat akses login ketika username dan password nya sama dengan yang sudah ditetapkan.
+Projek tugas besar ini berjudul "Puzzle Number" yang dimana bertujuan untuk memberikan hiburan kepada para pengguna yang memainkannya
 
-step 2 : 
+# Projek tugas besar ini dikerjakan oleh 2 orang, yaitu : 
+Nama : Ida Bagus Mas Manuaba dengan NIM : 2105551008
+Github : 
+dan 
+Nama : I Putu Agus Putra Negara dengan NIM : 2105551044
+Github : 
+
+Text Editor yang kami gunakan yaitu Visual Studio Code dengan menambahkan beberapa extension seperti C/C++ dan Code Runner agar Text Editor tersebut dapat digunakan sebagai IDE, tetapi karena terkadang ada beberapa masalah saat mengcompile dengan extension tersebut maka kami juga menggunakan Dev C++ serta Mac Terminal untuk mencoba menjalankan program ini
+
+Maka dari itu program ini dapat dijalankan dengan cara :
+
+Mendownload repository Tugas-Besar-Pemrograman ini pada komputer anda
+Memastikan bahwa anda memiliki terminal based UNIX seperti Linux terminal, Mac terminal (pada OS Windows dapat menggunakan Terminal Cygwin sebagai emulator sekaligus compiler)
+Lalu mengganti directory sesuai dengan dimana anda menyimpan folder Tugas-Besar-Pemrograman ini contoh : cd D:/Tugas-Besar-Pemrograman atau cd Desktop/Tugas-Besar-Pemrograman
+Jika sudah berada pada directory yang benar maka anda dapat mengcompile file NumberPuzzle.c dang menjalankan nya 
+Silahkan mencoba kritik dan saran kami persilahkan dan kami akan mencoba untuk mengembangkan program ini Terima Kasih
