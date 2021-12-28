@@ -6,7 +6,6 @@ Projek tugas besar ini berjudul "Puzzle Number" yang dimana bertujuan untuk memb
 # Projek tugas besar ini dikerjakan oleh 2 orang, yaitu : 
 # Nama : Ida Bagus Mas Manuaba dengan NIM : 2105551008
 Github : https://github.com/idabgsmas
-dan 
 # Nama : I Putu Agus Putra Negara dengan NIM : 2105551044
 Github : https://github.com/aguss1204
 
