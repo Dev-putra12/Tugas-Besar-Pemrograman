@@ -21,9 +21,9 @@
 #define true 1 																		// mendefinisikan bahwa boolean 1 adalah true 
 #define false 0 																	// mendefinisikan bahwa boolean 0 adalah false
 
-#define easy 2 																		// untuk membuat game puzzle memiliki 10 kolom
-#define medium 10 																	// untuk membuat game puzzle memiliki 20 kolom
-#define hard 20 																	// untuk membuat game puzzle memiliki 30 kolom
+#define easy 2 																		// untuk membuat level easy game puzzle 
+#define medium 10 																	// untuk membuat level medium game puzzle 
+#define hard 20 																	// untuk membuat level hard game puzzle
 
 #define fieldSize 4 																// untuk membuat dimensi game puzzle menjadi 4
 
