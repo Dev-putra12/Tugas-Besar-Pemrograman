@@ -1,3 +1,6 @@
+/* Ida Bagus Mas Manuaba    (2105551008)
+   I Putu Agus Putra Negara (2105551044) */
+
 // Deklarasi file header 
 #include <stdlib.h> 																// memanggil seluruh library standar bahasa c
 #include <time.h> 																	// memanggil seluruh library yang mengandung waktu
