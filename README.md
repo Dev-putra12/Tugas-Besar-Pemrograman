@@ -4,11 +4,11 @@ repository ini berisi semua file yang digunakan untuk membuat tugas besar pemrog
 Projek tugas besar ini berjudul "Puzzle Number" yang dimana bertujuan untuk memberikan hiburan kepada para pengguna yang memainkannya
 
 # Projek tugas besar ini dikerjakan oleh 2 orang, yaitu : 
-Nama : Ida Bagus Mas Manuaba dengan NIM : 2105551008
-Github : 
+# Nama : Ida Bagus Mas Manuaba dengan NIM : 2105551008
+Github : https://github.com/idabgsmas
 dan 
-Nama : I Putu Agus Putra Negara dengan NIM : 2105551044
-Github : 
+# Nama : I Putu Agus Putra Negara dengan NIM : 2105551044
+Github : https://github.com/aguss1204
 
 Text Editor yang kami gunakan yaitu Visual Studio Code dengan menambahkan beberapa extension seperti C/C++ dan Code Runner agar Text Editor tersebut dapat digunakan sebagai IDE, tetapi karena terkadang ada beberapa masalah saat mengcompile dengan extension tersebut maka kami juga menggunakan Dev C++ serta Mac Terminal untuk mencoba menjalankan program ini
 
