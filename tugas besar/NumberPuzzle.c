@@ -38,7 +38,7 @@ char field2[fieldSize][fieldSize]; 													// untuk menentukan kolom
 unsigned int seed; 																	// digunakan agar tidak ada angka yang bernilai negatif 
 int x, y; 																			// mendeklarasikan variabel x dan y
  
-// assign namaFile (nF) agar menyimpan string "RecordLogin.txt"
+// assign namaFile agar menyimpan string "RecordLogin.txt"
 char namaFile[] = "RecordLogin.txt";
 
 // Struct User untuk menyimpan member nama, username, password
@@ -742,17 +742,17 @@ void daftar(){
     // Membuat pointer regis untuk file "RecordLogin.txt"
     FILE *regis;
 
-    // Membuka file "RecordLogin.txt" dengan mode "w"
+    // Membuka file "RecordLogin.txt" dengan mode "w" write
     regis = fopen(namaFile,"w");
 
     // Melakukan Pengecekan apakah pointer regis menunjuk kepada file yang dituju ("RecordLogin.txt")
     if (regis == NULL)
     {
-        fputs("ERROR, File tidak ditemukan!", stderr);
+        fputs("Error, File tidak ditemukan!", stderr);
         exit(1);
     }
 
-    // Instruksi untuk menginput nama, username dan password    
+    // instruksi untuk menginput nama, username dan password    
     simbol();
 	setcolor(14);
 	printf("\n\t\t                      M E N U  R E G I S T E R     ");                      
@@ -802,12 +802,12 @@ void daftar(){
 //=======================================================================//
 void masuk(){
     /*  Variabel username[12] digunakan untuk menyimpan input username
-        yang dilakukan oleh pengguna. Inputan tersebut akan divalidasi
+        yang dilakukan oleh pengguna. Inputan tersebut akan dibandingkan
         dengan username yang sudah terdaftar pada file RecordLogin.txt   */
     char username[12];
 
     /*  Variabel password[10] digunakan untuk menyimpan input password
-        yang dilakukan oleh pengguna. Inputan tersebut akan divalidasi
+        yang dilakukan oleh pengguna. Inputan tersebut akan dibandingkan
         dengan password yang sudah terdaftar pada file RecordLogin.txt   */
     char password[10];
 
@@ -924,5 +924,5 @@ void masuk(){
 void waktu(){
     time( & waktuserver);
     struct tm * waktu = localtime( & waktuserver);
-    printf("\n\t\t            ||---------- Tanggal: %i/%i/%i ----------||\n\n", waktu -> tm_mday, waktu -> tm_mon + 1, waktu -> tm_year + 1900);
+    printf("\n\t\t            | ---------- Tanggal: %i/%i/%i ---------- |\n\n", waktu -> tm_mday, waktu -> tm_mon + 1, waktu -> tm_year + 1900);
 }
