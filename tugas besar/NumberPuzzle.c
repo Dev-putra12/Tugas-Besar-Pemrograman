@@ -1,6 +1,3 @@
-/* Ida Bagus Mas Manuaba    (2105551008)
-   I Putu Agus Putra Negara (2105551044) */
-
 // Deklarasi file header 
 #include <stdlib.h> 																// memanggil seluruh library standar bahasa c
 #include <time.h> 																	// memanggil seluruh library yang mengandung waktu
@@ -21,16 +18,18 @@
 #define true 1 																		// mendefinisikan bahwa boolean 1 adalah true 
 #define false 0 																	// mendefinisikan bahwa boolean 0 adalah false
 
-#define easy 2 																		// untuk membuat level easy game puzzle 
-#define medium 10 																	// untuk membuat level medium game puzzle 
-#define hard 20 																	// untuk membuat level hard game puzzle
+#define easy 2 																		// untuk membuat game puzzle memiliki 10 kolom
+#define medium 10 																	// untuk membuat game puzzle memiliki 20 kolom
+#define hard 20 																	// untuk membuat game puzzle memiliki 30 kolom
 
 #define fieldSize 4 																// untuk membuat dimensi game puzzle menjadi 4
 
 //Deklarasi variable global
-int pilihanmenu; 																	//variabel untuk pilihan menu pada program
-int level;																			// variabel untuk level permainan
+int pilihanmenu; 																	//variabel untuk pilihan menu pada program																		// variabel untuk level permainan
 int pilihanmasuk;
+int moves = -1;
+char score = 0;
+char level = 1;
 time_t waktuserver;                   												//variabel waktuserver   => berfungsi untuk mengambil waktu dari sistem.
 
 char field[fieldSize][fieldSize]; 													// untuk menentukan baris
@@ -38,7 +37,7 @@ char field2[fieldSize][fieldSize]; 													// untuk menentukan kolom
 unsigned int seed; 																	// digunakan agar tidak ada angka yang bernilai negatif 
 int x, y; 																			// mendeklarasikan variabel x dan y
  
-// assign namaFile agar menyimpan string "RecordLogin.txt"
+// assign namaFile (nF) agar menyimpan string "RecordLogin.txt"
 char namaFile[] = "RecordLogin.txt";
 
 // Struct User untuk menyimpan member nama, username, password
@@ -242,6 +241,8 @@ void generateOutput()
 		printf("+----"); 																				//menampilkan teks dalam tanda kutip
 		puts("+");																						//menampilkan teks dalam kutip dengan perpindahan baris
     }
+    		moves++;
+            printf("\n  MOVES: %d\tSCORE: %d\tLEVEL: %d\n", moves, score, level);
 	puts    ("\n\t\t   || -------- Tekan ESC untuk Keluar / Reset Permainan . . . -------- ||\n");		//menampilkan teks dalam kutip dengan perpindahan baris
 }
 
@@ -384,6 +385,8 @@ void main_game()
                 puts("\n\t\t                       -------------------------             ");            //menampilkan teks dalam kutip dengan perpindahan baris             
     			puts("\n\t\t             	       |SELAMAT, ANDA MENANG!!!|             ");            //menampilkan teks dalam kutip dengan perpindahan baris               
     			puts("\n\t\t                       -------------------------             "); 			//menampilkan teks dalam kutip dengan perpindahan baris
+    			score++;
+    			moves = -1;
                 break;																					//keluar dari while 
             }
         }
@@ -742,17 +745,17 @@ void daftar(){
     // Membuat pointer regis untuk file "RecordLogin.txt"
     FILE *regis;
 
-    // Membuka file "RecordLogin.txt" dengan mode "w" write
+    // Membuka file "RecordLogin.txt" dengan mode "w"
     regis = fopen(namaFile,"w");
 
     // Melakukan Pengecekan apakah pointer regis menunjuk kepada file yang dituju ("RecordLogin.txt")
     if (regis == NULL)
     {
-        fputs("Error, File tidak ditemukan!", stderr);
+        fputs("ERROR, File tidak ditemukan!", stderr);
         exit(1);
     }
 
-    // instruksi untuk menginput nama, username dan password    
+    // Instruksi untuk menginput nama, username dan password    
     simbol();
 	setcolor(14);
 	printf("\n\t\t                      M E N U  R E G I S T E R     ");                      
@@ -802,12 +805,12 @@ void daftar(){
 //=======================================================================//
 void masuk(){
     /*  Variabel username[12] digunakan untuk menyimpan input username
-        yang dilakukan oleh pengguna. Inputan tersebut akan dibandingkan
+        yang dilakukan oleh pengguna. Inputan tersebut akan divalidasi
         dengan username yang sudah terdaftar pada file RecordLogin.txt   */
     char username[12];
 
     /*  Variabel password[10] digunakan untuk menyimpan input password
-        yang dilakukan oleh pengguna. Inputan tersebut akan dibandingkan
+        yang dilakukan oleh pengguna. Inputan tersebut akan divalidasi
         dengan password yang sudah terdaftar pada file RecordLogin.txt   */
     char password[10];
 
@@ -924,5 +927,5 @@ void masuk(){
 void waktu(){
     time( & waktuserver);
     struct tm * waktu = localtime( & waktuserver);
-    printf("\n\t\t            | ---------- Tanggal: %i/%i/%i ---------- |\n\n", waktu -> tm_mday, waktu -> tm_mon + 1, waktu -> tm_year + 1900);
+    printf("\n\t\t            ||---------- Tanggal: %i/%i/%i ----------||\n\n", waktu -> tm_mday, waktu -> tm_mon + 1, waktu -> tm_year + 1900);
 }
