@@ -1,3 +1,6 @@
+/* Ida Bagus Mas Manuaba    (2105551008)
+   I Putu Agus Putra Negara (2105551044) */
+
 // Deklarasi file header 
 #include <stdlib.h> 																// memanggil seluruh library standar bahasa c
 #include <time.h> 																	// memanggil seluruh library yang mengandung waktu
@@ -18,18 +21,18 @@
 #define true 1 																		// mendefinisikan bahwa boolean 1 adalah true 
 #define false 0 																	// mendefinisikan bahwa boolean 0 adalah false
 
-#define easy 2 																		// untuk membuat game puzzle memiliki 10 kolom
-#define medium 10 																	// untuk membuat game puzzle memiliki 20 kolom
-#define hard 20 																	// untuk membuat game puzzle memiliki 30 kolom
+#define easy 2 																		// untuk membuat level easy game puzzle
+#define medium 10 																	// untuk membuat level medium game puzzle
+#define hard 20 																	// untuk membuat level hard game puzzle
 
 #define fieldSize 4 																// untuk membuat dimensi game puzzle menjadi 4
 
 //Deklarasi variable global
-int pilihanmenu; 																	//variabel untuk pilihan menu pada program																		// variabel untuk level permainan
-int pilihanmasuk;
-int moves = -1;
-char score = 0;
-char level = 1;
+int pilihanmenu; 																	//variabel untuk pilihan menu pada program																		
+int pilihanmasuk;																	// variabel untuk pilihan menu masuk
+int moves = -1;																		// variabel untuk mencatat moves/perpindahan puzzle pemain
+char score = 0;																		// variabel untuk mencatat skor
+char level = 1;																		// variabel untuk level permainan
 time_t waktuserver;                   												//variabel waktuserver   => berfungsi untuk mengambil waktu dari sistem.
 
 char field[fieldSize][fieldSize]; 													// untuk menentukan baris
@@ -67,6 +70,8 @@ void daftar();                                       							/* Fungsi void dafta
 
 void masuk();                                        							/* Fungsi void masuk() digunakan agar pengguna dapat masuk dengan username serta
                                                         						   password yang sudah dibuat dan nantinya akan dilanjutkan kedalam fitur program*/
+void data_skor();                                        						// Merupakan fungsi yang digunakan untuk menampilkan history skor
+void skor_terakhir();                                        					// Merupakan fungsi yang digunakan untuk menampilkan skor terakhir                                                        						   
 int acak(int i); 																// untuk membuat nilai acak pada kolom puzzle
 void initField(int movement); 													// untuk membuat pergerakan di dalam game puzzle 
 void move(int arah);															// untuk menentukan arah gerak pada game puzzle
@@ -242,8 +247,11 @@ void generateOutput()
 		puts("+");																						//menampilkan teks dalam kutip dengan perpindahan baris
     }
     		moves++;
-            printf("\n  MOVES: %d\tSCORE: %d\tLEVEL: %d\n", moves, score, level);
-	puts    ("\n\t\t   || -------- Tekan ESC untuk Keluar / Reset Permainan . . . -------- ||\n");		//menampilkan teks dalam kutip dengan perpindahan baris
+    		printf("\n\t\t        ==============================================================\n");			//untuk menampilkan tulisan didalam tanda petik  
+            printf("\n\t\t\t\t || MOVES: %d \t  SCORE: %d\tLEVEL: %d || \n", moves, score, level);
+            printf("\n\t\t        ==============================================================\n");			//untuk menampilkan tulisan didalam tanda petik  
+            printf("\n");			//untuk menampilkan tulisan didalam tanda petik  
+			puts("\n\t\t   || -------- Tekan ESC untuk Keluar / Reset Permainan . . . -------- ||\n");		//menampilkan teks dalam kutip dengan perpindahan baris
 }
 
 
@@ -312,6 +320,7 @@ int cekUrut()
 //fungsi ini unutk memilih level kesulitan pada game puzzle 
 void main_game() 
 {
+	FILE *history;
 	int i, j, k;																						//variabel bertipe data integer
     char key;																							//variabel key bertipe data char
     for(;;) {																							//menggunakan for
@@ -381,12 +390,41 @@ void main_game()
                     move(kanan);																		//move ke kanan
                     break;																				//keluar dari case
             }
-            if (cekUrut() == true) {																	//jika cekUrut = true
+            if (cekUrut() == true) {		
+				setcolor(2);															//jika cekUrut = true
                 puts("\n\t\t                       -------------------------             ");            //menampilkan teks dalam kutip dengan perpindahan baris             
-    			puts("\n\t\t             	       |SELAMAT, ANDA MENANG!!!|             ");            //menampilkan teks dalam kutip dengan perpindahan baris               
+    			puts("\n\t\t             	       | SELAMAT, ANDA MENANG! |             ");            //menampilkan teks dalam kutip dengan perpindahan baris               
     			puts("\n\t\t                       -------------------------             "); 			//menampilkan teks dalam kutip dengan perpindahan baris
     			score++;
-    			moves = -1;
+    			
+    			history=fopen("skorTerakhir.txt","w");
+    			fprintf(history,"\n\t\t                  - - - - - - - - - - - - - - - - - - - -              ");
+    			fprintf(history,"\n\t\t                            H I S T O R Y  G A M E                   ");
+    			fprintf(history,"\n\t\t                  - - - - - - - - - - - - - - - - - - - -              ");
+    			fprintf(history,"\n\t\t                       -----------------------------                   ");
+    			fprintf(history,"\n\n\t\t              		  Username : %s", u.username);
+    			fprintf(history,"\n\n\t\t            		  Moves    : %d", moves);
+    			fprintf(history,"\n\n\t\t            		  Score    : %d", score);
+    			fprintf(history,"\n\n\t\t            		  Level	   : %d", level);
+    			fprintf(history,"\n\n\t\t                       -----------------------------                   ");
+    			fprintf(history,"\n\t\t                  - - - - - - - - - - - - - - - - - - - -              \n\n");
+    			fclose(history);
+    			
+    			history=fopen("historygame.txt","a");
+    			fprintf(history,"\n\t\t                  - - - - - - - - - - - - - - - - - - - -              ");
+    			fprintf(history,"\n\t\t                            H I S T O R Y  G A M E                   ");
+    			fprintf(history,"\n\t\t                  - - - - - - - - - - - - - - - - - - - -              ");
+    			fprintf(history,"\n\t\t                       -----------------------------                   ");
+    			fprintf(history,"\n\n\t\t              		  Username : %s", u.username);
+    			fprintf(history,"\n\n\t\t            		  Moves    : %d", moves);
+    			fprintf(history,"\n\n\t\t            		  Score    : %d", score);
+    			fprintf(history,"\n\n\t\t            		  Level	   : %d", level);
+    			fprintf(history,"\n\n\t\t                       -----------------------------                   ");
+    			fprintf(history,"\n\t\t                  - - - - - - - - - - - - - - - - - - - -              \n\n");
+    			fprintf(history,"\n\t\t        ============================================================      \n\n");
+    			fclose(history);
+				
+				moves = -1;    
                 break;																					//keluar dari while 
             }
         }
@@ -395,7 +433,8 @@ void main_game()
             if (toupper(getchar()) == 'Y') break;														
             else continue;
         } else {
-        	printf("\n\t\t   	|| -------- Silahkan Pilih Level Untuk Tetap Bermain -------- ||\n");	//untuk menampilkan teks didalam tanda petik
+        	setcolor(6);
+        	printf("\n\t\t    || -------- Silahkan Pilih Level Untuk Tetap Bermain -------- ||\n");	//untuk menampilkan teks didalam tanda petik
             if (toupper(getchar()) == 'T') {
                 puts("\nTerima Kasih Telah Mencoba!!!");												//untuk menampilkan teks didalam tanda petik dengan perpindahan baris
                 getch();																				//untuk menahan tampilan 
@@ -482,10 +521,18 @@ void menu()
     
     printf("\n\t\t                       -------------------------             ");                                
     printf("\n\t\t                       |  3. TENTANG           |             ");                                
+    printf("\n\t\t                       -------------------------             ");
+	
     printf("\n\t\t                       -------------------------             ");                                
+    printf("\n\t\t                       |  4. SKOR TERAKHIR     |             ");                                
+    printf("\n\t\t                       -------------------------             ");
+	
+	printf("\n\t\t                       -------------------------             ");                                
+    printf("\n\t\t                       |  5. HISTORY SKOR      |             ");                                
+    printf("\n\t\t                       -------------------------             ");  	                                
  
     printf("\n\t\t                       -------------------------             ");                                
-    printf("\n\t\t                       |  4. LOGOUT            |             ");                                
+    printf("\n\t\t                       |  6. LOGOUT            |             ");                                
     printf("\n\t\t                       -------------------------             ");                                
   
     printf  ("\n\n\t\t        ===================================================\n");
@@ -513,8 +560,19 @@ void menu()
         break;        
     case 4:
     	// Jika pengguna menginput angka 4 maka akan keluar dari program
+        skor_terakhir();
+        break;
+        
+    case 5:
+    	// Jika pengguna menginput angka 4 maka akan keluar dari program
+        data_skor();
+        break;        
+    
+	case 6:
+    	// Jika pengguna menginput angka 4 maka akan keluar dari program
         menu_masuk();
         break;
+		    
     default:
         error_alert();
         // Kembali ke label mnmasuk jika terjadi kesalahan dalam menginput pilihan
@@ -631,6 +689,111 @@ void menu_tentang () {
     system ("cls");
     menu();                             
 }
+
+//=======================================================================//
+//**********   Fungsi Untuk Menampilkan Data/History Skor   *************//
+//=======================================================================//
+// Nama Fungsi    : -                                                    //
+// Input Argumen  : -                                                    //
+// Output Argumen : -                                                    //
+// Deskripsi      : Menampilkan data/history skor			             //
+//                                                                       //
+// Versi : 1.0                                      Rev. 0               //
+// Tgl   : 02-01-2022                               Tgl: -               //
+// Ida Bagus Mas Manuaba - 2105551008                                    //
+// Kelas A                                                               //
+//=======================================================================//
+
+void data_skor() {
+	char buff[255];
+    FILE *historygame;
+
+    // membuka file
+    if ((historygame = fopen("historygame.txt","r")) == NULL){
+    	simbol();
+    	printf("\n\t\t  ---------------------------------------------------------------------              ");                         
+    	printf("\n\t\t |  Anda belum memiliki skor! Silahkan Bermain untuk mendapatkan Skor! |             ");    	
+        printf("\n\t\t  ---------------------------------------------------------------------              \n");   
+        printf  ("\t\t        =========================================================\n");
+		printf  ("\t\t        ||                                                     ||\n");
+		printf  ("\t\t        ||       Tekan ENTER  untuk Kembali Ke Menu Utama      ||\n");
+		printf  ("\t\t        ||                                                     ||\n");
+    	printf  ("\t\t        =========================================================\n");
+		getch ();
+    	system ("cls");
+    	menu();   
+    }
+	simbol();
+    // baca isi file dengan gets lalu simpan ke buff
+    while(fgets(buff, sizeof(buff), historygame)){
+        printf("%s", buff);
+    }
+    
+	printf  ("\t\t         =========================================================\n");
+	printf  ("\t\t         ||                                                     ||\n");
+	printf  ("\t\t         ||       Tekan ENTER  untuk Kembali Ke Menu Utama      ||\n");
+	printf  ("\t\t         ||                                                     ||\n");
+    printf  ("\t\t         =========================================================\n");
+	getch ();
+    system ("cls");
+    menu();     
+
+    // tutup file
+    fclose(historygame);
+}
+
+//=======================================================================//
+//**********   Fungsi Untuk Menampilkan Data Skor Terakhir   ************//
+//=======================================================================//
+// Nama Fungsi    : -                                                    //
+// Input Argumen  : -                                                    //
+// Output Argumen : -                                                    //
+// Deskripsi      : Menampilkan data skor terakhir			             //
+//                                                                       //
+// Versi : 1.0                                      Rev. 0               //
+// Tgl   : 02-01-2022                               Tgl: -               //
+// Ida Bagus Mas Manuaba - 2105551008                                    //
+// Kelas A                                                               //
+//=======================================================================//
+
+void skor_terakhir() {
+	char buff[255];
+    FILE *historygame;
+
+    // membuka file
+    if ((historygame = fopen("skorTerakhir.txt","r")) == NULL){
+    	simbol();
+    	printf("\n\t\t  ---------------------------------------------------------------------              ");                         
+    	printf("\n\t\t |  Anda belum memiliki skor! Silahkan Bermain untuk mendapatkan Skor! |             ");    	
+        printf("\n\t\t  ---------------------------------------------------------------------              \n");   
+        printf  ("\t\t        =========================================================\n");
+		printf  ("\t\t        ||                                                     ||\n");
+		printf  ("\t\t        ||       Tekan ENTER  untuk Kembali Ke Menu Utama      ||\n");
+		printf  ("\t\t        ||                                                     ||\n");
+    	printf  ("\t\t        =========================================================\n");
+		getch ();
+    	system ("cls");
+    	menu();   
+    }
+	simbol();
+    // baca isi file dengan gets lalu simpan ke buff
+    while(fgets(buff, sizeof(buff), historygame)){
+        printf("%s", buff);
+    }
+    
+	printf  ("\t\t         =========================================================\n");
+	printf  ("\t\t         ||                                                     ||\n");
+	printf  ("\t\t         ||       Tekan ENTER  untuk Kembali Ke Menu Utama      ||\n");
+	printf  ("\t\t         ||                                                     ||\n");
+    printf  ("\t\t         =========================================================\n");
+	getch ();
+    system ("cls");
+    menu();     
+
+    // tutup file
+    fclose(historygame);
+}
+
 
 //=======================================================================//
 //**************   Fungsi Untuk Menampilkan Pesan Eror   ****************//
@@ -775,15 +938,22 @@ void daftar(){
     // Menuliskan nama yang diinput oleh pengguna kedalam file "RecordLogin.txt"
 	fwrite(&u, sizeof(u), 1, regis);
   	fclose(regis);
-  	printf("\t\t          |===================================================|\n");
-  	printf("\t\t          |                    BERHASIL REGISTER              |\n");
-  	printf("\t\t          |---------------------------------------------------|\n");
-  	printf("\t\t          |HALLO %s!                                   \n", u.nama);
-  	printf("\t\t          |AKUN ANDA TELAH TERDAFTAR,SILAHKAN LOGIN DAN BERSENANG-SENANG ");
-  	printf("\t\t          |===================================================|\n");
-  	getchar();
-  	printf("\t\t          |             TEKAN ENTER UNTUK MELANJUTKAN         |\n");
+	system ("cls");
+	setcolor(2);
+  	printf("\t\t          |===============================================================|\n");
+  	printf("\t\t          |                 B E R H A S I L  R E G I S T E R              |\n");
+  	printf("\t\t          |===============================================================|\n");
+  	setcolor(6);      		
+  	printf("\t\t          |---------------------------------------------------------------|\n");
+  	printf("\t\t                                    HALLO %s!                            \n", u.nama);
+  	printf("\t\t          |---------------------------------------------------------------|\n\n");  	
+  	printf("\t\t          | AKUN ANDA TELAH TERDAFTAR,SILAHKAN LOGIN DAN BERSENANG-SENANG |\n");
+  	printf("\t\t          |===============================================================|\n");
+  	printf("\t\t          |                 TEKAN ENTER UNTUK MELANJUTKAN                 |\n");
+  	printf("\t\t          |===============================================================|\n");
     // Membersikan layar terminal
+    // Membersikan layar terminal
+	getch();
     system ("cls");
     // Memanggil fungsi masuk()
     masuk();
@@ -847,13 +1017,23 @@ void masuk(){
         /*  Mengkomparasi username serta password yang diinput pengguna kedalam fungsi
             masuk() dengan username serta password yang sudah terdaftar */
         if(strcmp(username, u.username)==0 && strcmp(password, u.password)==0){
-        	setcolor(2);
+		    system("cls");	
+		    setcolor(2);
             printf("\t\t           |================================================|\n");
             printf("\t\t           |                                                |\n");
       		printf("\t\t           |                   LOGIN BERHASIL               |\n");
       		printf("\t\t           |                                                |\n");
       		printf("\t\t           |================================================|\n");
-      		menu();
+      		printf("\n");
+      		setcolor(6);
+      		printf("\t\t       =========================================================\n");
+			printf("\t\t       ||                                                     ||\n");
+			printf("\t\t       ||             Tekan ENTER  untuk Melanjutkan          ||\n");
+			printf("\t\t       ||                                                     ||\n");
+    		printf("\t\t       =========================================================\n");		
+      		getch ();
+    		system ("cls");	
+      		menu();	
       		
         }
         //  Jika akun tidak terdaftar maka akan diberikan pilihan untuk mendaftar atau keluar dari program
@@ -864,8 +1044,18 @@ void masuk(){
       		printf("\t\t           |               AKUN TIDAK TERDAFTAR             |\n");
       		printf("\t\t           |                                                |\n");
       		printf("\t\t           |================================================|\n");
-
+      		printf("\n");
+      		
+      		setcolor(6);
+      		printf("\t\t       =========================================================\n");
+			printf("\t\t       ||                                                     ||\n");
+			printf("\t\t       ||        Tekan ENTER  untuk Kembali Ke Menu Awal      ||\n");
+			printf("\t\t       ||                                                     ||\n");
+    		printf("\t\t       =========================================================\n");	      		
+      		getch ();
+    		system ("cls");
             mnmasuk:
+            	
             setcolor(6);
 			printf("\n\t\t    S E L A M A T   D A T A N G  D I  G A M E  P U Z Z L E  N U M B E R     ");                      
     		printf("\n\t\t    S I L A H K A N  L O G I N/R E G I S T E R  U N T U K  B E R M A I N  \n");
@@ -896,6 +1086,7 @@ void masuk(){
             } else if (pilihan ==3){
                 exit(1);
             } else {
+            	setcolor(4);
                 printf("t\t                    |================================================|\n");
                 printf("t\t                    |                                                |\n");
         		printf("t\t                    |               PILIHAN TIDAK TERSEDIA           |\n");
@@ -927,5 +1118,5 @@ void masuk(){
 void waktu(){
     time( & waktuserver);
     struct tm * waktu = localtime( & waktuserver);
-    printf("\n\t\t            ||---------- Tanggal: %i/%i/%i ----------||\n\n", waktu -> tm_mday, waktu -> tm_mon + 1, waktu -> tm_year + 1900);
+    printf("\n\t\t               ||---------- Tanggal: %i/%i/%i ----------||\n\n", waktu -> tm_mday, waktu -> tm_mon + 1, waktu -> tm_year + 1900);
 }
