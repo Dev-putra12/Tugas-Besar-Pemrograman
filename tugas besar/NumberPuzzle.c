@@ -724,6 +724,11 @@ void data_skor() {
     	menu();   
     }
 	simbol();
+	printf  ("\n\t\t         =========================================================\n");
+	printf  ("\t\t         ||                                                     ||\n");
+	printf  ("\t\t         ||             S K O R  K E S E L U R U H A N          ||\n");
+	printf  ("\t\t         ||                                                     ||\n");
+    printf  ("\t\t         =========================================================\n");	
     // baca isi file dengan gets lalu simpan ke buff
     while(fgets(buff, sizeof(buff), historygame)){
         printf("%s", buff);
@@ -776,6 +781,11 @@ void skor_terakhir() {
     	menu();   
     }
 	simbol();
+	printf  ("\n\t\t         =========================================================\n");
+	printf  ("\t\t         ||                                                     ||\n");
+	printf  ("\t\t         ||                S K O R  T E R A K H I R             ||\n");
+	printf  ("\t\t         ||                                                     ||\n");
+    printf  ("\t\t         =========================================================\n");	
     // baca isi file dengan gets lalu simpan ke buff
     while(fgets(buff, sizeof(buff), historygame)){
         printf("%s", buff);
@@ -846,22 +856,22 @@ void menu_masuk(){
 	mnmasuk:
     simbol();
 	setcolor(14);
-	printf("\n\t\t    S E L A M A T   D A T A N G  D I  G A M E  P U Z Z L E  N U M B E R     ");                      
-    printf("\n\t\t    S I L A H K A N  L O G I N/R E G I S T E R  U N T U K  B E R M A I N  \n");
+	printf("\n\t\t   S E L A M A T   D A T A N G  D I  G A M E  P U Z Z L E  N U M B E R     ");                      
+    printf("\n\t\t   S I L A H K A N  L O G I N/R E G I S T E R  U N T U K  B E R M A I N  \n");
     printf("\n\t\t     ----------------------------------------------------------------       ");
     setcolor(6);
-    printf("\n\n\t\t                M E N U  L O G I N/R E G I S T E R                      \n");                               
-    printf("\n\t\t                       -------------------------             ");                         
-    printf("\n\t\t                       |  1. LOGIN             |             ");                           
-    printf("\n\t\t                       -------------------------             ");                               
-    printf("\n\t\t                       -------------------------             ");                                
-    printf("\n\t\t                       |  2. REGISTER          |             ");                                
-    printf("\n\t\t                       -------------------------             ");                                
-    printf("\n\t\t                       -------------------------             ");                                
-    printf("\n\t\t                       |  3. EXIT              |             ");                                
-    printf("\n\t\t                       -------------------------             ");                                                             
-    printf  ("\n\t\t        ===================================================\n");
-    printf ("\t\t                      Masukkan pilihan Anda : ");
+    printf("\n\n\t\t                   M E N U  L O G I N/R E G I S T E R                      \n");                               
+    printf("\n\t\t                        -------------------------             ");                         
+    printf("\n\t\t                        |  1. LOGIN             |             ");                           
+    printf("\n\t\t                        -------------------------             ");                               
+    printf("\n\t\t                        -------------------------             ");                                
+    printf("\n\t\t                        |  2. REGISTER          |             ");                                
+    printf("\n\t\t                        -------------------------             ");                                
+    printf("\n\t\t                        -------------------------             ");                                
+    printf("\n\t\t                        |  3. EXIT              |             ");                                
+    printf("\n\t\t                        -------------------------             ");                                                             
+    printf  ("\n\t\t        ======================================================\n");
+    printf ("\t\t                        Masukkan pilihan Anda : ");
     scanf  ("%d", &pilihanmasuk);
     // Membersihkan Layar terminal 
     system ("cls");
@@ -921,18 +931,18 @@ void daftar(){
     // Instruksi untuk menginput nama, username dan password    
     simbol();
 	setcolor(14);
-	printf("\n\t\t                      M E N U  R E G I S T E R     ");                      
-    printf("\n\t\t       S I L A H K A N  L E N G K A P I  D A T A  D I B A W A H  \n");
+	printf("\n\t\t                        M E N U  R E G I S T E R     ");                      
+    printf("\n\t\t         S I L A H K A N  L E N G K A P I  D A T A  D I B A W A H  \n");
     printf("\n\t\t     ----------------------------------------------------------------       ");
     setcolor(6);
-    printf("\n\n\t\t                          R E G I S T E R                      \n");                               
+    printf("\n\n\t\t                            R E G I S T E R                      \n");                               
     printf("\n\t\t                       -------------------------                 \n\n");
 	getchar();                         
-    printf("\t\t                    |  Masukan Nama     : ");
+    printf("\t\t                       |  Masukan Nama     : ");
 	gets(u.nama);                                                                                         
-    printf("\t\t                    |  Masukan Username : ");
+    printf("\t\t                       |  Masukan Username : ");
 	scanf("%s", u.username);                                                              
-    printf("\t\t                    |  Masukan Password : "); 
+    printf("\t\t                       |  Masukan Password : "); 
 	scanf("%s", u.password);                               
                                                             
     // Menuliskan nama yang diinput oleh pengguna kedalam file "RecordLogin.txt"
@@ -1001,15 +1011,15 @@ void masuk(){
     // Instruksi untuk LOGIN
     simbol();
 	setcolor(14);
-	printf("\n\t\t                        M E N U  L O G I N          ");                      
-    printf("\n\t\t      S I L A H K A N  L O G I N  D E N G A N  A K U N  A N D A  \n");
+	printf("\n\t\t                           M E N U  L O G I N          ");                      
+    printf("\n\t\t         S I L A H K A N  L O G I N  D E N G A N  A K U N  A N D A  \n");
     printf("\n\t\t     ----------------------------------------------------------------       ");
     setcolor(6);
-    printf("\n\n\t\t                             L O G I N                      \n");                               
+    printf("\n\n\t\t                               L O G I N                      \n");                               
     printf("\n\t\t                       -------------------------                 \n\n");                                                                                      
-    printf("\t\t                    |  Masukan Username : ");
+    printf("\t\t                       |  Masukan Username : ");
 	scanf("%s", username);                                                              
-    printf("\t\t                    |  Masukan Password : "); 
+    printf("\t\t                       |  Masukan Password : "); 
   	scanf("%s", password);    
     system("cls");
     // Membeaca file "RecordLogin.txt"
